@@ -36,3 +36,9 @@ class SageMakerNotebookConstruct(Construct):
             actions=["aoss:APIAccessAll"]
         ))
 
+        # Attach Bedrock access to invoke models
+        self.sagemaker_notebook_role.add_to_policy(iam.PolicyStatement(
+            resources=["*"],
+            actions=["bedrock:*"]
+        ))
+
