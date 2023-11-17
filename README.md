@@ -1,58 +1,55 @@
 
-# Welcome to your CDK Python project!
+# OpenSearch Serverless Python CDK project
 
-This is a blank project for CDK development with Python.
+Resources to be provisioned within your account:
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+* OpenSearch Serverless collection
+* SageMaker Jupyter Notebook instance
+* Lambda Custom Resource that will run once on deployment and create a vector index
+* IAM role with ``AmazonS3FullAccess`` and ``AmazonSageMakerFullAccess`` and access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
+* IAM role with access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
 
-To manually create a virtualenv on MacOS and Linux:
+Due to lengthy time it takes to spin up OpenSearch collection, the whole deployment will take around 15-20 minutes.
+
+# Before you start
+All of the commands are to be executed from the project's root folder.
+
+Recommended: Create a Python virtual environemnt. To manually create a virtualenv on MacOS and Linux:
 
 ```
-$ python3 -m venv .venv
+python3 -m venv .venv
 ```
 
 After the init process completes and the virtualenv is created, you can use the following
 step to activate your virtualenv.
 
 ```
-$ source .venv/bin/activate
+source .venv/bin/activate
 ```
 
 If you are a Windows platform, you would activate the virtualenv like this:
 
 ```
-% .venv\Scripts\activate.bat
+.venv\Scripts\activate.bat
 ```
 
 Once the virtualenv is activated, you can install the required dependencies.
 
 ```
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-At this point you can now synthesize the CloudFormation template for this code.
+After that bootstrap your account. You only need to do that once for an account per region.
 
 ```
-$ cdk synth
+cdk bootstrap
 ```
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+To deploy the application run the following command:
 
-## Useful commands
+```
+cdk deploy --require-approval never
+```
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+After that download a Jupyter Notebook file found in [jupyter_notebook](./backend/jupyter_notebook/02_qa_w_rag_claude_titan_opensearch_serverless.ipynb) folder and upload it to the newly created SageMaker Jupyter Notebook instance.
