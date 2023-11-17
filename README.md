@@ -52,4 +52,4 @@ To deploy the application run the following command:
 cdk deploy --require-approval never
 ```
 
-After that download a Jupyter Notebook file found in [jupyter_notebook](./backend/jupyter_notebook/02_qa_w_rag_claude_titan_opensearch_serverless.ipynb) folder and upload it to the newly created SageMaker Jupyter Notebook instance.
+After that clone the following repo ``https://github.com/aws-samples/amazon-bedrock-workshop.git`` in your Jupyter Notebook instance. 
