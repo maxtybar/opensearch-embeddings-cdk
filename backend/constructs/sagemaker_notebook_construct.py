@@ -1,6 +1,7 @@
 from aws_cdk import (
     aws_sagemaker as sagemaker,
-    aws_iam as iam
+    aws_iam as iam,
+    Fn
 )
 from constructs import Construct
 
@@ -13,20 +14,21 @@ class SageMakerNotebookConstruct(Construct):
         self.sagemaker_notebook_role_arn = props['notebook_role_arn']
         self.sagemaker_notebook_instance_type = props['notebook_instance_type']
         self.collection_arn = props['collection_arn']
+        self.git_repo = props['git_repo']
 
-        # # Create a lifecylce config to upload jupyter notebook file
-        # notebook_instance_lifecycle_config = sagemaker.CfnNotebookInstanceLifecycleConfig(self, "MyCfnNotebookInstanceLifecycleConfig",
-        #     notebook_instance_lifecycle_config_name="notebookInstanceLifecycleConfigName",
-        #     on_create=[sagemaker.CfnNotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHookProperty(
-        #         content="cd /home/ec2-user/SageMaker/ && wget <your_files_url_here>"
-        #     )]
-        # )
+        # Create a lifecylce config to clone git repo
+        notebook_instance_lifecycle_config = sagemaker.CfnNotebookInstanceLifecycleConfig(self, "MyCfnNotebookInstanceLifecycleConfig",
+            notebook_instance_lifecycle_config_name="notebookInstanceLifecycleConfigName",
+            on_create=[sagemaker.CfnNotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHookProperty(
+                content=Fn.base64("""cd /home/ec2-user/SageMaker/ && git clone {}""".format(self.git_repo))
+            )]
+        )
 
         # Create a SageMaker Notebook Instance
         sagemaker.CfnNotebookInstance(self, "MyCfnNotebookInstance",
             instance_type=self.sagemaker_notebook_instance_type,
             role_arn=self.sagemaker_notebook_role_arn,
-            # lifecycle_config_name=notebook_instance_lifecycle_config.get_att
+            lifecycle_config_name=notebook_instance_lifecycle_config.attr_notebook_instance_lifecycle_config_name
         )
 
         # Create a policy to allow access to OpenSearch Data Plane and 

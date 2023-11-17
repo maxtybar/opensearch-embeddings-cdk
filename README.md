@@ -6,8 +6,8 @@ Resources to be provisioned within your account:
 * OpenSearch Serverless collection
 * SageMaker Jupyter Notebook instance
 * Lambda Custom Resource that will run once on deployment and create a vector index
-* IAM role with ``AmazonS3FullAccess`` and ``AmazonSageMakerFullAccess`` and access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
-* IAM role with access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
+* IAM role with ``AmazonS3FullAccess`` and ``AmazonSageMakerFullAccess``, Bedrock full access, and access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
+* IAM role with access to the OpenSearch collection that was provisioned for Custom Resource Lambda to create a vector index in the collection
 
 
 Due to lengthy time it takes to spin up OpenSearch collection, the whole deployment will take around 15-20 minutes.
@@ -52,4 +52,4 @@ To deploy the application run the following command:
 cdk deploy --require-approval never
 ```
 
-After that clone the following repo ``https://github.com/aws-samples/amazon-bedrock-workshop.git`` in your Jupyter Notebook instance. 
+The following repository was copied to the notebook - ``https://github.com/aws-samples/amazon-bedrock-workshop.git``. 

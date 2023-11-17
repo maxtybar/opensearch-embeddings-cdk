@@ -19,6 +19,8 @@ class OpenSearchStack(Stack):
         self.vector_index_name = 'test-vector'
         self.text_field = 'text-field'
         self.metadata_filed = 'metadata-field'
+        self.git_repo = "https://github.com/aws-samples/amazon-bedrock-workshop.git"
+
 
         custom_resource_iam_role = CustomResourceIamRoleConstruct(self, "CustomResourceIamRoleConstruct", {})
         sagemaker_notebook_role = SageMakerNotebookRoleConstruct(self, "SageMakerNotebookRoleConstruct", {})
@@ -43,7 +45,8 @@ class OpenSearchStack(Stack):
             "collection_arn": opensearch_collection.collection_arn,
             "notebook_instance_type": self.sagemaker_notebook_instance_type,
             "notebook_role": sagemaker_notebook_role.role,
-            "notebook_role_arn": sagemaker_notebook_role.role_arn
+            "notebook_role_arn": sagemaker_notebook_role.role_arn,
+            "git_repo": self.git_repo
         })
         
         sagemaker_notebook.node.add_dependency(sagemaker_notebook_role)
