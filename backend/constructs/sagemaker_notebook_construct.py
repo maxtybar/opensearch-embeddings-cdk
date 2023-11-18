@@ -20,7 +20,7 @@ class SageMakerNotebookConstruct(Construct):
         notebook_instance_lifecycle_config = sagemaker.CfnNotebookInstanceLifecycleConfig(self, "MyCfnNotebookInstanceLifecycleConfig",
             notebook_instance_lifecycle_config_name="notebookInstanceLifecycleConfigName",
             on_create=[sagemaker.CfnNotebookInstanceLifecycleConfig.NotebookInstanceLifecycleHookProperty(
-                content=Fn.base64("""cd /home/ec2-user/SageMaker/ && git clone {}""".format(self.git_repo))
+                content=Fn.base64("""cd /home/ec2-user/SageMaker/ && git clone {} && sudo chmod -R 777 ./ && rm -r lost+found""".format(self.git_repo))
             )]
         )
 

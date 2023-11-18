@@ -10,7 +10,7 @@ Resources to be provisioned within your account:
 * IAM role with access to the OpenSearch collection that was provisioned for Custom Resource Lambda to create a vector index in the collection
 
 
-Due to lengthy time it takes to spin up OpenSearch collection, the whole deployment will take around 15-20 minutes.
+Due to lengthy time it takes to spin up OpenSearch collection, the whole deployment will take around 10-15 minutes.
 
 # Before you start
 All of the commands are to be executed from the project's root folder.
@@ -40,7 +40,8 @@ Once the virtualenv is activated, you can install the required dependencies.
 pip install -r requirements.txt
 ```
 
-After that bootstrap your account. You only need to do that once for an account per region.
+After that bootstrap your account if this your first time using cdk in this account. 
+You only need to do that once for an account per region.
 
 ```
 cdk bootstrap
@@ -52,4 +53,4 @@ To deploy the application run the following command:
 cdk deploy --require-approval never
 ```
 
-The following repository was copied to the notebook - ``https://github.com/aws-samples/amazon-bedrock-workshop.git``. 
+The following repository was copied to the notebook - ``https://github.com/aws-samples/amazon-bedrock-workshop.git`` and you will be able to access it in your ``/home/ec2-user/SageMaker/`` notebook directory.

@@ -66,7 +66,7 @@ def index_data(region, vector_index_name, text_field,
     service = 'aoss'
     credentials = boto3.Session().get_credentials()
     awsauth = AWS4Auth(credentials.access_key, credentials.secret_key,
-                   region, service, session_token=credentials.token)
+                       region, service, session_token=credentials.token)
     
     """Create an index"""
     # Build the OpenSearch client
