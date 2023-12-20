@@ -5,7 +5,7 @@ Resources to be provisioned within your account:
 
 * OpenSearch Serverless collection
 * SageMaker Jupyter Notebook instance
-* IAM role with ``AmazonS3FullAccess`` and ``AmazonSageMakerFullAccess``, Bedrock full access, and access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
+* IAM role with ``AmazonS3FullAccess`` and ``AmazonSageMakerFullAccess``, Bedrock full access, access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook and ``BatchGetCollection`` API call against OpenSearch Serverless collections.
 
 **Impotant Note:** Jupyter notebook as well as assets related to it (like images and dependencies) that are included and being used in this repository (found in [this](./notebook/) folder) were cloned and modified from the oficial aws-samples repository (see original notebook [here](https://github.com/aws-samples/amazon-bedrock-workshop/blob/main/03_QuestionAnswering/02_qa_w_rag_claude_opensearch.ipynb)).
 
