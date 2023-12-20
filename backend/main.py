@@ -19,7 +19,8 @@ class OpenSearchStack(Stack):
         self.vector_index_name = 'test-vector'
         self.text_field = 'text-field'
         self.metadata_filed = 'metadata-field'
-        self.git_repo = "https://github.com/aws-samples/amazon-bedrock-workshop.git"
+        # self.git_repo = "https://github.com/aws-samples/amazon-bedrock-workshop.git"
+        self.git_repo = "https://github.com/maxtybar/opensearch-cdk.git"
         self.current_user_arn = self.node.try_get_context("current_user_arn")
 
 
