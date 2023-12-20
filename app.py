@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
-import os
 
 from backend.main import OpenSearchEmbeddingsExampleStack
 

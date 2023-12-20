@@ -9,7 +9,19 @@ Resources to be provisioned within your account:
 
 **Impotant Note:** Jupyter notebook as well as assets related to it (like images and dependencies) that are included and being used in this repository (found in [this](./notebook/) folder) were cloned and modified from the oficial aws-samples repository (see original notebook [here](https://github.com/aws-samples/amazon-bedrock-workshop/blob/main/03_QuestionAnswering/02_qa_w_rag_claude_opensearch.ipynb)).
 
-Due to lengthy time it takes to spin up OpenSearch collection and Notebook Instance, the whole deployment will take around 10-15 minutes.
+# Prerequisites
+
+Deployment has been tested on MacOS and Linux machines. Installation guide assumes you have AWS account and Administrator Access to provision all the resources. 
+
+Due to lengthy time it takes to spin up OpenSearch collection and Notebook Instance, the whole deployment can take anywhere around 10-15 minutes.
+
+=============
+
+* [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) >= 16.0.0
+* [Python](https://www.python.org/) >= 3.11
+* [pip](https://pypi.org/project/pip/) >= 23.3.1
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) >= 2.0.0
+* [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) >= 2.66.1
 
 # Before you start
 
@@ -24,11 +36,15 @@ python3 -m venv .venv
 After the init process completes and the virtualenv is created, you can use the following
 step to activate your virtualenv.
 
+**Note: This command is for MacOS/Linux machines only.** 
+If you are using MacOS/Linux machine run the following command:
+
 ```
 source .venv/bin/activate
 ```
 
-If you are a Windows platform, you would activate the virtualenv like this:
+**Note: This command is for Windows machines only.** 
+If you are using a Windows platform, you would activate the virtualenv like this:
 
 ```
 .venv\Scripts\activate.bat

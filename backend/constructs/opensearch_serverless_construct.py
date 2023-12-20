@@ -21,7 +21,6 @@ class OpenSearchCollectionConstruct(Construct):
 
         self.collection_name = props['collection_name']
         self.notebook_role_arn = props['notebook_role_arn']
-        # self.custom_resource_role_arn = props['custom_resource_role_arn']
         self.current_user_arn = props['current_user_arn']
 
         # Encryption policy for opensearch collection
@@ -101,11 +100,7 @@ class OpenSearchCollectionConstruct(Construct):
                 ]
             }]"""
         )
-
-        # ,
-        #            \"""" + self.custom_resource_role_arn + """\"
-        # 
-
+        
         # Create opensearch collection
         self._collection = opensearchserverless.CfnCollection(
             self,
