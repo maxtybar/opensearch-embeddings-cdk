@@ -33,7 +33,7 @@ git clone https://github.com/maxtybar/opensearch-embeddings-cdk.git
 
 Navigate to the cloned repository in your terminal/shell. All of the commands are to be executed from the project's root folder/repo that you just cloned.
 
-Recommended: Create a Python virtual environemnt. To manually create a virtualenv on MacOS and Linux:
+Recommended: Create a Python virtual environment. To manually create a virtualenv run the following command:
 
 ```
 python3 -m venv .venv
