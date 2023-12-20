@@ -5,14 +5,14 @@ Resources to be provisioned within your account:
 
 * OpenSearch Serverless collection
 * SageMaker Jupyter Notebook instance
-* Lambda Custom Resource that will run once on deployment and create a vector index
 * IAM role with ``AmazonS3FullAccess`` and ``AmazonSageMakerFullAccess``, Bedrock full access, and access to the OpenSearch collection that was provisioned for SageMaker Jupyter Notebook
-* IAM role with access to the OpenSearch collection that was provisioned for Custom Resource Lambda to create a vector index in the collection
 
+**Impotant Note:** Jupyter notebook as well as assets related to it (like images and dependencies) that are included and being used in this repository (found in [this](./notebook/) folder) were cloned and modified from the oficial aws-samples repository (see original notebook [here](https://github.com/aws-samples/amazon-bedrock-workshop/blob/main/03_QuestionAnswering/02_qa_w_rag_claude_opensearch.ipynb)).
 
-Due to lengthy time it takes to spin up OpenSearch collection, the whole deployment will take around 10-15 minutes.
+Due to lengthy time it takes to spin up OpenSearch collection and Notebook Instance, the whole deployment will take around 10-15 minutes.
 
 # Before you start
+
 All of the commands are to be executed from the project's root folder.
 
 Recommended: Create a Python virtual environemnt. To manually create a virtualenv on MacOS and Linux:
@@ -50,7 +50,15 @@ cdk bootstrap
 To deploy the application run the following command:
 
 ```
-cdk deploy --require-approval never
+cdk deploy -c current_user_arn=$(aws sts get-caller-identity --query Arn --output text) --require-approval never
 ```
 
-The following repository was copied to the notebook - ``https://github.com/aws-samples/amazon-bedrock-workshop.git`` and you will be able to access it in your ``/home/ec2-user/SageMaker/`` notebook directory.
+Current repository was also cloned to the Jupyter Notebook Instance and you can access it in ``/home/ec2-user/SageMaker/`` notebook directory in your Amazon SageMaker Notebook Instance.
+
+# How to delete
+
+From within the root project folder (``opensearch-embeddings-cdk``), run the following command:
+
+```
+cdk destroy -c current_user_arn=$(aws sts get-caller-identity --query Arn --output text) --force
+```

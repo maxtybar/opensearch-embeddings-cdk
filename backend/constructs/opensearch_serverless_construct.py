@@ -1,4 +1,5 @@
 from aws_cdk import (
+    Stack,
     CfnOutput,
     aws_opensearchserverless as opensearchserverless
 )
@@ -96,7 +97,7 @@ class OpenSearchCollectionConstruct(Construct):
                 \"Principal\": [
                     \"""" + self.notebook_role_arn + """\",
                     \"""" + self.current_user_arn + """\",
-                    "arn:aws:iam::${self.account}:user/Admin"
+                    "arn:aws:iam::""" + Stack.of(self).account + """:user/Admin"
                 ]
             }]"""
         )

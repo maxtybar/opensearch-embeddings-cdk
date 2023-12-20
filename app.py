@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
+import os
 
-from backend.main import OpenSearchStack
+from backend.main import OpenSearchEmbeddingsExampleStack
 
 app = cdk.App()
-OpenSearchStack(app, "OpenSearchStack")
+OpenSearchEmbeddingsExampleStack(app, "OpenSearchEmbeddingsExampleStack")
 app.synth()                 

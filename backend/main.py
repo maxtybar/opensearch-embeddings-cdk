@@ -8,7 +8,7 @@ from backend.constructs.custom_resource_iam_role import CustomResourceIamRoleCon
 from backend.constructs.custom_resource_construct import CustomResourceConstruct
 
 
-class OpenSearchStack(Stack):
+class OpenSearchEmbeddingsExampleStack(Stack):
 
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs) 
@@ -20,9 +20,8 @@ class OpenSearchStack(Stack):
         self.text_field = 'text-field'
         self.metadata_filed = 'metadata-field'
         # self.git_repo = "https://github.com/aws-samples/amazon-bedrock-workshop.git"
-        self.git_repo = "https://github.com/maxtybar/opensearch-cdk.git"
         self.current_user_arn = self.node.try_get_context("current_user_arn")
-
+        self.git_repo = "https://github.com/maxtybar/opensearch-embeddings-cdk.git"
 
         # custom_resource_iam_role = CustomResourceIamRoleConstruct(self, "CustomResourceIamRoleConstruct", {})
         sagemaker_notebook_role = SageMakerNotebookRoleConstruct(self, "SageMakerNotebookRoleConstruct", {})
