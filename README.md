@@ -60,7 +60,7 @@ After that bootstrap your account if this your first time using cdk in this acco
 You only need to do that once for an account per region.
 
 ```
-cdk bootstrap
+cdk bootstrap -c current_user_arn=$(aws sts get-caller-identity --query Arn --output text) --require-approval never
 ```
 
 To deploy the application run the following command:
